@@ -36,7 +36,7 @@ public class JsonParseNodeFactory implements ParseNodeFactory {
         }
         try (final InputStreamReader reader =
                 new InputStreamReader(rawResponse, StandardCharsets.UTF_8)) {
-            return new JsonParseNode(JsonMapper.mapper.readTree(reader));
+            return new JsonParseNode(JsonMapper.mapper.reader().readTree(reader));
         } catch (IOException ex) {
             throw new RuntimeException("could not close the reader", ex);
         }
